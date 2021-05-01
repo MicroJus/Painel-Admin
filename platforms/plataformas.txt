@@ -1,0 +1,14 @@
+[  1  ] Cisco			[  14  ] OSX 
+[  2  ] Solaris			[  15  ] BSD 
+[  3  ] OpenBSD			[  16  ] hardware
+[  4  ] Firefox			[  17  ] BSDi 
+[  5  ] NetBSD			[  18  ] NodeJS 
+[  6  ] FreeBSD			[  19  ] Python 
+[  7  ] AIX			[  20  ] JavaScript 
+[  8  ] HPUX			[  21  ] PHP 
+[  9  ] Irix			[  22  ] Unix 
+[  10 ] Linux			[  23  ] Ruby 
+[  11 ] Java			[  24  ] Android 
+[  12 ] Netware			[  25  ] Windows
+[  13 ] mainframe		[  26  ] multi
+
