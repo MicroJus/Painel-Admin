@@ -76,7 +76,7 @@ Menu() {
 		echo -e "$green<$blue====================$icyan=========================$blue=================$green>"
         	echo
 	toilet -f smblock --filter border:metal '		Painel Admin!		'
-	        echo -e "$blue ----------------------(Jarvis Assistente)--------------------"
+	        echo -e "$blue ----------------------(Micro Assistente)--------------------"
         	echo
 	        echo -e "$green<$blue====================$icyan=========================$blue=================$green>"
         	echo
@@ -139,7 +139,7 @@ Advanced() {
 		echo -e "$green<$red====================$yellow===========$yellow==============$red=================$green>"
                 echo
 	        toilet -f smblock --filter border:metal '              Painel Admin!            '
-                echo -e "$blue ----------------------(Jarvis Assistente)--------------------"
+                echo -e "$blue ----------------------(Micro Assistente)--------------------"
                 echo
                 echo -e "$green<$red====================$yellow======$yellow===================$red=================$green>"
 		echo
