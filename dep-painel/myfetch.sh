@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 deps=("bc" "lolcat")
+deps=("bc" "neofetch")
 
 for i in ${deps[@]}; do
 	if [[ ! $(which $i 2>/dev/null) ]]; then
@@ -54,19 +55,19 @@ cat <<EOF
 $d_title
 $qtd
 Distro: ${d^}
-User: $d_user
-OS: $d_os
+User:$d_user
+OS:$d_os
 CPU:$d_cpu
-Uptime: $d_uptime
-Date: $d_date
-Time: $d_time
-Shell: ${d_shell^}
+Uptime:$d_uptime
+Date:$d_date
+Time:$d_time
+Shell:$d_shell
 RAM:$d_mem
 Kernel:$d_kname
 Font:$d_font
-Mem Free: $d_memfree
-Architeture: $d_arch
-$a
+Mem Free:$d_memfree
+Architeture:$d_arch
+
 EOF
 }
 
@@ -74,29 +75,29 @@ display_info
 d=${d,,}
 
 outra="
-	 ..,;:cllllc:;..
-     ,d0NMMMMMMMMMMMMMMMMMWKx;
-   .KMMMMMMMMMMMMMMMMMMMMMMMMMN.
-   0MMMMMMMMMMMMMMMMMMMMMMMMMMMX
-  'MMMKkddxONMMMMMMMMMNOdloxKMMM;
-  oM0xkx;. . .dWMMMWx. . .,xkx0Mx
-  0MWMMMMM0:...OMMMO...;0MMMMMWM0
-  XMMMMNKKNMN,.KMMMN,cXMNKKXMMMMX
-  NW0;     .:0..MMMWNK:.     ;0WW
-  WO.,;:cclldK. WMMMMXdddddxxxOOO
-  KMMMMMMMMMMW  WMMMMMMMMMMMMMMMN
-  .KMMMMMMMMMx  MMMMMMMMMMMMMMMMx
-  ,;lKNNXKKXl  .MMMMKOMMMMMMMWOl
-   k.' l0KWo k ;MMMMMXOMKOk'.'.l
-    0cc ;OWMNW.cMMMKMMMMMK,.O;0
-     0o,,  .,'  .:  'ol;. ;l,0.
-      OO.ckdc,',kOc...,ckNl:0.
-       oK. kKKXWWMMMMMMMMxkx
-        ;X.XMMNd   0MMMWxX:
-         .k0MMMk  .WMMMNX.
-           oMMM,   KMMMk
-            'XMx  .WMK,
-              ';  .c.
+	 ..,;:cllllc:;..            
+     ,d0NMMMMMMMMMMMMMMMMMWKx;      
+   .KMMMMMMMMMMMMMMMMMMMMMMMMMN.    
+   0MMMMMMMMMMMMMMMMMMMMMMMMMMMX    
+  'MMMKkddxONMMMMMMMMMNOdloxKMMM;   
+  oM0xkx;. . .dWMMMWx. . .,xkx0Mx   
+  0MWMMMMM0:...OMMMO...;0MMMMMWM0   
+  XMMMMNKKNMN,.KMMMN,cXMNKKXMMMMX   
+  NW0;     .:0..MMMWNK:.     ;0WW   
+  WO.,;:cclldK. WMMMMXdddddxxxOOO   
+  KMMMMMMMMMMW  WMMMMMMMMMMMMMMMN   
+  .KMMMMMMMMMx  MMMMMMMMMMMMMMMMx   
+  ,;lKNNXKKXl  .MMMMKOMMMMMMMWOl    
+   k.. l0KWo k ;MMMMMXOMKOk..'.l    
+    0cc ;OWMNW.cMMMKMMMMMK,.O;0     
+     0o,,  .,'  .:  ´ol;. ;l,0.     
+      OO.ckdc,',kOc...,ckNl:0.      
+       oK. kKKXWWMMMMMMMMxkx        
+        ;X.XMMNd   0MMMWxX:         
+         .k0MMMk  .WMMMNX.          
+           oMMM,   KMMMk            
+            'XMx  .WMK,             
+              ';  .c.               
 
 
 "
