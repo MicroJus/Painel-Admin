@@ -2,7 +2,7 @@
 clear
 
 #MODIFICAÇÃO
-# 21/09/2020
+#21/09/2020
 
 #AUTOR:
 # MERCENÁRIO
@@ -72,6 +72,10 @@ icyan='\e[1;36m'
 white='\e[1;37m'
 yellow='\e[1;33m'
 
+clear
+#Funçoes-----------------------------------------------------------------
+
+#FUNÇOES DO MENU PRINCIPAL
 Menu() {
 		echo -e "$green<$blue====================$icyan=========================$blue=================$green>"
         	echo
@@ -248,50 +252,8 @@ Comum() {
 read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite uma opção: \e[0m' resposta2
 	clear
 if [ $resposta2 = 1 ]; then
-	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo: \e[0m' local
-	clear
-if [ -e $local ]; then
-		echo -e "$icyan Arquivos do diretório $local"
-        	echo -e "$blue--------------------------------------------------------------"
-	        echo
-		cd $local && ls
-		echo
-	        echo -e "$blue--------------------------------------------------------------"
-        	echo
-else
-	echo -e "$red O local nao existe!!!"
-	sleep 1
-	clear
-Comum
-fi
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite o nome do arquivo junto da sua extemsão: \e[0m' archive
-	clear
-if [ -e $archive ]; then
-	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local de destino: \e[0m' destino
-else
-		echo -e "$red O arquivo não existe"
-	sleep 1
-	clear
-Comum
-fi
 
-if [ -d "$destino" ];then
-		echo -e "$green Movendo"
-	sleep 1
-	clear
-	cd $local && mv $archive $destino
-                echo -e "$green Movido!!!"
-        sleep 1
-Comum
-
-else
-	clear
-		echo -e "$red O destino o nao existe!!!"
-	sleep 2
-Comum
-fi
+	Mover
 
 elif [ $resposta2 = 2 ]; then
 	clear
@@ -420,6 +382,61 @@ else
         sleep 1
         clear
 	Comum
+fi
+}
+
+#========================================================================================================================#
+
+#Funçoes comuns
+
+Mover(){	
+clear
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo: \e[0m' local
+	clear
+if [ -e $local ]; then
+		echo -e "$icyan Arquivos do diretório $local"
+        	echo -e "$blue--------------------------------------------------------------"
+	        echo
+		cd $local && ls
+		echo
+	        echo -e "$blue--------------------------------------------------------------"
+        	echo
+else
+	echo -e "$red O local nao existe!!!"
+	sleep 1
+	clear
+
+Comum
+
+fi
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite o nome do arquivo junto da sua extensão: \e[0m' archive
+	clear
+if [ -e $archive ]; then
+	clear
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local de destino: \e[0m' destino
+else
+		echo -e "$red O arquivo não existe"
+	sleep 1
+	clear
+
+Comum
+
+fi
+
+if [ -d "$destino" ];then
+		echo -e "$green Movendo"
+	sleep 1
+	clear
+	cd $local && mv $archive $destino
+                echo -e "$green Movido!!!"
+        sleep 1
+Comum
+
+else
+	clear
+		echo -e "$red O destino o nao existe!!!"
+	sleep 2
+Comum
 fi
 }
 Menu
