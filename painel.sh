@@ -249,130 +249,29 @@ Comum() {
 		echo "[ 8 ] Atualizar"
 		echo "[ 9 ] Voltar "
 		echo -e "$green"
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite uma opção: \e[0m' resposta2
-	clear
+		read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite uma opção: \e[0m' resposta2
+		clear
+
 if [ $resposta2 = 1 ]; then
 
 	Mover
 
 elif [ $resposta2 = 2 ]; then
-	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo que deseja renomear: \e[0m' local2
-	if [ ! -d "$local2" ]; then
 
-	clear
-		echo -e "$red O local não existe!"
-	sleep 1
-	clear
-	Comum
-	fi
-	clear
-		echo -e "$icyan Arquivos do diretório $local2"
-		echo -e "$blue--------------------------------------------------------------"
-		echo
-	cd $local2 && ls
-echo
-echo -e "$blue--------------------------------------------------------------"
-echo
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite o nome do arquivo que deseja renomear junto da sua extensão: \e[0m' lastname
-	clear
-	DIR=$local2
-	FILE=$lastname
-if [ -e "$FILE" ]; then
-		echo -e "$red O arquivo existe $red"
-	else
-		echo -e "$red O arquivo digitado não existe"
-	sleep 1
-	Comum
-fi
-	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um novo nome para o arquivo junto da sua extensão: \e[0m' newname
-	clear
-		echo -e "$green Renomeando..."
-	sleep 1
-	clear
-	cd $local2 && mv $lastname "$newname"
-		echo -e "$green Renomeado com sucesso!!!"
-	sleep 1
-	clear
-	Comum
+	Renomear
 
 elif [ $resposta2 = 3 ]; then
-	ptintf $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] O que feseja criar?: \e[0m'
-		echo
-		echo "[ 1 ] Pasta"
-		echo "[ 2 ] Arquivo"
-		echo
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite uma opcão: \e[0m' criacao
-	clear
-
-if [ $criacao = 1 ]; then
-		echo -e "$green"
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um nome para a pasta: \e[0m'name
-	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um destino para a pasta: \e[0m'destino
-	clear
-		echo -e "$green $greem[$white+$green] Criando..."
-	sleep 1
-	clear
-		echo -e "$green $greem[$white+$green] Criado com sucesso!!!"
-	sleep 1
-	clear
-		cd $destino && mkdir $name
-		clear
-Comum
-fi
-
-if [ $criacao = 2 ]; then
-		echo -e "$green"
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um nome para o arquivo junto da sua extensão: \e[0m'name3
-	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um destino para o arquivo: \e[0m' destino3
-	clear
-		echo -e "$green $greem[$white+$green] Criando..."
-        sleep 1
-        clear
-		echo -e "$green $greem[$white+$green] Criado com sucesso!!!"
-        sleep 1
-        clear
-		cd $destino3 && touch $name3
-
-Comum
-fi
+	
+	Criar
 
 elif [ $resposta2 = 7 ]; then
-	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local a ser (Beackapado): \e[0m' local
-	if [ ! -d "$local" ]; then
-        clear
-        	echo -e "$red O local não existe!"
-        sleep 1
-        clear
-        Comum
-        fi
-	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um nome para o : \e[0m' nome
-	clear
-		echo "Informe o destino do backup:"
-	read -p "->" destino
-	zip -r $destino/"$nome".zip $local
-	sleep 1
-clear
-	Comum
+	
+	Backup
+
 elif [ $resposta2 = 8 ]; then
-	clear
-	toilet -w 34 -f smblock --filter border:metal 'VERIFICANDO ATUALIZAÇÃO'
-	sleep 1
-		echo "$(date '+%D %T' | toilet -f term -F border --metal)"
-	apt full-upgrade -y
-	apt update && apt upgrade -y
-	clear
-	toilet -f smblock --filter metal '____________________'
-	toilet -f mono9 -F metal "SUCESSO"
-	toilet -f smblock --filter metal '^^^^^^^^^^^^^^^^^^^^'
-	sleep 2
-	clear
-	Comum
+
+	Atualizar
+
 elif [ $resposta2 = 9 ]; then
 	clear
         Menu
@@ -438,5 +337,174 @@ else
 	sleep 2
 Comum
 fi
+
+	}
+
+#========================================================================
+Renomear(){
+	clear
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo que deseja renomear: \e[0m' local2
+	if [ ! -d "$local2" ]; then
+
+	clear
+		echo -e "$red O local não existe!"
+	sleep 1
+	clear
+	Comum
+	fi
+	clear
+		echo -e "$icyan Arquivos do diretório $local2"
+		echo -e "$blue--------------------------------------------------------------"
+		echo
+	cd $local2 && ls
+echo
+echo -e "$blue--------------------------------------------------------------"
+echo
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite o nome do arquivo que deseja renomear junto da sua extensão: \e[0m' lastname
+	clear
+	DIR=$local2
+	FILE=$lastname
+if [ -e "$FILE" ]; then
+		echo -e "$red O arquivo existe $red"
+	else
+		echo -e "$red O arquivo digitado não existe"
+	sleep 1
+	Comum
+fi
+	clear
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um novo nome para o arquivo junto da sua extensão: \e[0m' newname
+	clear
+		echo -e "$green Renomeando..."
+	sleep 1
+	clear
+	cd $local2 && mv $lastname "$newname"
+		echo -e "$green Renomeado com sucesso!!!"
+	sleep 1
+	clear
+	Comum
+
 }
+
+#========================================================================
+Criar(){
+clear		
+ptintf $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] O que feseja criar?: \e[0m'
+		echo
+		echo "[ 1 ] Pasta"
+		echo "[ 2 ] Arquivo"
+		echo
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite uma opcão: \e[0m' criacao
+	clear
+
+if [ $criacao = 1 ]; then
+		echo -e "$green"
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um nome para a pasta: \e[0m'name
+	clear
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um destino para a pasta: \e[0m'destino
+	clear
+		echo -e "$green $greem[$white+$green] Criando..."
+	sleep 1
+	clear
+		echo -e "$green $greem[$white+$green] Criado com sucesso!!!"
+	sleep 1
+	clear
+		cd $destino && mkdir $name
+		clear
+Comum
+fi
+
+if [ $criacao = 2 ]; then
+		echo -e "$green"
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um nome para o arquivo junto da sua extensão: \e[0m'name3
+	clear
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um destino para o arquivo: \e[0m' destino3
+	clear
+		echo -e "$green $greem[$white+$green] Criando..."
+        sleep 1
+        clear
+		echo -e "$green $greem[$white+$green] Criado com sucesso!!!"
+        sleep 1
+        clear
+		cd $destino3 && touch $name3
+
+Comum
+fi
+
+}
+
+#========================================================================
+Instalar(){
+
+	Comum
+
+}
+
+#========================================================================
+Desinstalar(){
+
+	Comum
+
+}
+
+#========================================================================
+Excluir(){
+
+	Comum
+}
+
+#========================================================================
+
+Backup(){
+
+	clear
+
+	read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local a ser (Beackapado): \e[0m' local
+
+	if [ ! -d "$local" ]; then
+        
+		clear
+        
+	echo -e "$red O local não existe!"
+        
+	sleep 1
+        clear
+        
+	Comum
+        
+		fi	
+
+	clear
+	
+	read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um nome para o : \e[0m' nome
+	
+	clear
+	
+	echo "Informe o destino do backup:"
+	
+			read -p "->" destino
+		zip -r $destino/"$nome".zip $local
+	
+	sleep 1
+	clear
+
+}
+
+#========================================================================
+Atualizar(){
+
+	clear
+	toilet -w 34 -f smblock --filter border:metal 'VERIFICANDO ATUALIZAÇÃO'
+	sleep 1
+		echo "$(date '+%D %T' | toilet -f term -F border --metal)"
+	apt full-upgrade -y
+	apt update && apt upgrade -y
+	clear
+	toilet -f smblock --filter metal '____________________'
+	toilet -f mono9 -F metal "SUCESSO"
+	toilet -f smblock --filter metal '^^^^^^^^^^^^^^^^^^^^'
+	sleep 2
+	clear
+	Comum
+}
+
 Menu
