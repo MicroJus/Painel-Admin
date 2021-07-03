@@ -1,5 +1,5 @@
 #!/bin/bash
-clear
+
 
 #MODIFICAÇÃO
 #21/09/2020
@@ -79,7 +79,7 @@ clear
 Menu() {
 		echo -e "$green<$blue====================$icyan=========================$blue=================$green>"
         	echo
-	toilet -f smblock --filter border:metal '		Painel Admin!		'
+		toilet -f smblock --filter border:metal '		Painel Admin!		'
 	        echo -e "$blue ----------------------(Micro Assistente)--------------------"
         	echo
 	        echo -e "$green<$blue====================$icyan=========================$blue=================$green>"
@@ -154,75 +154,10 @@ Advanced() {
 		echo
 read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Digite um das opções: \e[0m' resposta
 	clear
-	if [ $resposta = 1 ]; then
-echo
-echo -e "$red		         __________"
-echo -e "$red                      .~#########%%;~."
-echo -e "$red                     ¦############%%;¬¦"
-echo -e "$red                    ¦############%%;,;,¦"
-echo -e "$red                   |#############;;;;.,.|"
-echo -e "$red                   |###########%;;;;;.,.|"
-echo -e "$red          XX       |##/~~\####%;;;/~~\;,|       XX"
-echo -e "$red        XX..X      |#|  o  \##%;/  o  |.|      X..XX"
-echo -e "$red      XX.....X     |##\____/##%;\____/.,|     X.....XX"
-echo -e "$red  XXXXX.....XX      \#########/\;;;;;;,, /      XX.....XXXXX"
-echo -e "$red X |......XX%,.@      \######/%;\;;;;, /      @#%,XX......| X"
-echo -e "$red X |.....X  @#%,.@     |######%%;;;;,.|     @#%,.@  X.....| X"
-echo -e "$red X  \...X     @#%,.@   |# # # % ; ; ;,|   @#%,.@     X.../  X"
-echo -e "$red  X# \.X        @#%,.@                  @#%,.@        X./  #"
-echo -e "$red  ##  X          @#%,.@              @#%,.@          X   #"
-echo -e "$red   # #X            @#%,.@          @#%,.@            X ##"
-echo -e "$red   ^###X             @#%,.@      @#%,.@             ####;"
-echo -e "$red  . ¡ ###              @#%.,@  @#%,.@              ###!"
-echo -e "$red    .  X#                @#%.@#%,.@                ;x#  ."
-echo -e "$red      °                    @#%,.@                   §."
-echo -e "$red      ° ,                @#%,.@  @@                 -"
-echo -e "$red                          @@@  @@@  "
-echo
-echo -e "$yellow		(Todo Sistema é Vulneravel)"
-	sleep 2
-		echo
-read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Digite um nome para o payload: \e[0m' payload_name
-		echo
-read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Informe o LPORT: \e[0m' payload_lport
-		echo
-read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Informe o LHOST: \e[0m' payload_lhost
-		echo
-		cat  "/data/data/com.termux/files/home/projetos/Painel Admin/platforms/plataformas.txt"
-		echo
-read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Informe a plataforma a ser explorada: \e[0m' payload_plataforma
-		echo
-read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Informe a arwuitetura do payload: \e[0m' payload_arch
-		echo
-read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Informe um destino para o payload: \e[0m' payload_destino
-		clear
-		echo
-		echo -e "$green $greem[$white+$green] NOME: $payload_name"
-		echo
-		echo -e "$green $greem[$white+$green] LPORT: $payload_lport"
-		echo
-		echo -e "$green $greem[$white+$green] LHOST: $payload_lhost"
-		echo
-		echo -e "$green $greem[$white+$green] PLATAFORMA: $payload_plataforma"
-		echo
-		echo -e "$green $greem[$white+$green] ARQUITETURA: $payload_arch"
-		echo
-read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] As informações a cima estão corretas? s/n: \e[0m' payload_resposta
-		echo
-if [ $payload_resposta = s ]; then
-	echo "Nada"
-	sleep 1
-	clear
-		echo -e "$green Criando Payload"
-	clear
-	Advanced
-else
-	echo "Opção Invalida!!!"
-	sleep 1
-	clear
-fi
 
-Advanced
+if [ $resposta = 1 ]; then
+
+	Payload
 
 elif [ $resposta = 2 ]; then
 	Menu
@@ -233,7 +168,10 @@ elif [ $resposta = 2 ]; then
 	clear
 	Advanced
 fi
-	}
+
+Advanced
+
+}
 
 Comum() {
 	clear
@@ -289,9 +227,15 @@ fi
 #Funçoes comuns
 
 Mover(){	
+
 clear
 read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo: \e[0m' local
-	clear
+clear
+if [ $local = 0 ]; then
+	
+	Comum
+fi
+
 if [ -e $local ]; then
 		echo -e "$icyan Arquivos do diretório $local"
         	echo -e "$blue--------------------------------------------------------------"
@@ -308,6 +252,7 @@ else
 Comum
 
 fi
+
 read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite o nome do arquivo junto da sua extensão: \e[0m' archive
 	clear
 if [ -e $archive ]; then
@@ -338,13 +283,22 @@ else
 Comum
 fi
 
-	}
+}
 
 #========================================================================
+
 Renomear(){
+
 	clear
 read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo que deseja renomear: \e[0m' local2
-	if [ ! -d "$local2" ]; then
+
+if [ $local2 = 0 ]; then
+
+	Comum
+
+fi
+
+if [ ! -d "$local2" ]; then
 
 	clear
 		echo -e "$red O local não existe!"
@@ -382,7 +336,7 @@ read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um novo nome para o ar
 	sleep 1
 	clear
 	Comum
-
+	
 }
 
 #========================================================================
@@ -505,6 +459,80 @@ Atualizar(){
 	sleep 2
 	clear
 	Comum
+}
+#advanced
+#+==========================================================================
+
+Payload(){
+
+echo
+echo -e "$red		         __________"
+echo -e "$red                      .~#########%%;~."
+echo -e "$red                     ¦############%%;¬¦"
+echo -e "$red                    ¦############%%;,;,¦"
+echo -e "$red                   |#############;;;;.,.|"
+echo -e "$red                   |###########%;;;;;.,.|"
+echo -e "$red          XX       |##/~~\####%;;;/~~\;,|       XX"
+echo -e "$red        XX..X      |#|  o  \##%;/  o  |.|      X..XX"
+echo -e "$red      XX.....X     |##\____/##%;\____/.,|     X.....XX"
+echo -e "$red  XXXXX.....XX      \#########/\;;;;;;,, /      XX.....XXXXX"
+echo -e "$red X |......XX%,.@      \######/%;\;;;;, /      @#%,XX......| X"
+echo -e "$red X |.....X  @#%,.@     |######%%;;;;,.|     @#%,.@  X.....| X"
+echo -e "$red X  \...X     @#%,.@   |# # # % ; ; ;,|   @#%,.@     X.../  X"
+echo -e "$red  X# \.X        @#%,.@                  @#%,.@        X./  #"
+echo -e "$red  ##  X          @#%,.@              @#%,.@          X   #"
+echo -e "$red   # #X            @#%,.@          @#%,.@            X ##"
+echo -e "$red   ^###X             @#%,.@      @#%,.@             ####;"
+echo -e "$red  . ¡ ###              @#%.,@  @#%,.@              ###!"
+echo -e "$red    .  X#                @#%.@#%,.@                ;x#  ."
+echo -e "$red      °                    @#%,.@                   §."
+echo -e "$red      ° ,                @#%,.@  @@                 -"
+echo -e "$red                          @@@  @@@  "
+echo
+echo -e "$yellow		(Todo Sistema é Vulneravel)"
+	sleep 2
+		echo
+read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Digite um nome para o payload: \e[0m' payload_name
+		echo
+read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Informe o LPORT: \e[0m' payload_lport
+		echo
+read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Informe o LHOST: \e[0m' payload_lhost
+		echo
+		cat  "/data/data/com.termux/files/home/projetos/Painel Admin/platforms/plataformas.txt"
+		echo
+read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Informe a plataforma a ser explorada: \e[0m' payload_plataforma
+		echo
+read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Informe a arwuitetura do payload: \e[0m' payload_arch
+		echo
+read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Informe um destino para o payload: \e[0m' payload_destino
+		clear
+		echo
+		echo -e "$green $greem[$white+$green] NOME: $payload_name"
+		echo
+		echo -e "$green $greem[$white+$green] LPORT: $payload_lport"
+		echo
+		echo -e "$green $greem[$white+$green] LHOST: $payload_lhost"
+		echo
+		echo -e "$green $greem[$white+$green] PLATAFORMA: $payload_plataforma"
+		echo
+		echo -e "$green $greem[$white+$green] ARQUITETURA: $payload_arch"
+		echo
+read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] As informações a cima estão corretas? s/n: \e[0m' payload_resposta
+		echo
+if [ $payload_resposta = s ]; then
+	echo "Nada"
+	sleep 1
+	clear
+		echo -e "$green Criando Payload"
+	clear
+	Advanced
+else
+	echo "Opção Invalida!!!"
+	sleep 1
+	clear
+fi
+
+
 }
 
 Menu
