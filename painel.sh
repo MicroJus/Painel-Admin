@@ -38,7 +38,8 @@
 # files (the "Software"), to deal
 # in the Software without restriction, including
 # without limitation the rights
-# to use, copy, modify, merge, publish, distribute,
+# to use
+# copy, modify, merge, publish, distribute,
 # sublicense, and/or sell
 # copies of the Software, and to permit persons
 # to whom the Software is
@@ -73,10 +74,13 @@ white='\e[1;37m'
 yellow='\e[1;33m'
 
 clear
-#Funçoes-----------------------------------------------------------------
+
+
 
 #FUNÇOES DO MENU PRINCIPAL
+
 Menu() {
+		clear
 		echo -e "$green<$blue====================$icyan=========================$blue=================$green>"
         	echo
 		toilet -f smblock --filter border:metal '		Painel Admin!		'
@@ -202,6 +206,18 @@ elif [ $resposta2 = 3 ]; then
 	
 	Criar
 
+elif [ $resposta2 = 4 ]; then 
+
+	Instalar
+
+elif [ $resposta2 = 5 ]; then
+
+	Desisntalar
+
+elif [ $resposta2 = 6 ]; then
+
+	Excluir
+
 elif [ $resposta2 = 7 ]; then
 	
 	Backup
@@ -211,7 +227,7 @@ elif [ $resposta2 = 8 ]; then
 	Atualizar
 
 elif [ $resposta2 = 9 ]; then
-	clear
+
         Menu
 else
 	clear
@@ -220,9 +236,9 @@ else
         clear
 	Comum
 fi
+
 }
 
-#========================================================================================================================#
 
 #Funçoes comuns
 
@@ -230,11 +246,21 @@ Mover(){
 
 clear
 read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo: \e[0m' local
-clear
-if [ $local = 0 ]; then
-	
+
+if [ "$local" == "" ]; then
+	clear
+	echo -e "$red Esta Vazio!!!"
+	sleep 2
+
 	Comum
-fi
+ 
+else
+
+if [ $local = 0 ]; then
+
+	Comum
+
+else
 
 if [ -e $local ]; then
 		echo -e "$icyan Arquivos do diretório $local"
@@ -244,7 +270,8 @@ if [ -e $local ]; then
 		echo
 	        echo -e "$blue--------------------------------------------------------------"
         	echo
-else
+
+else 
 	echo -e "$red O local nao existe!!!"
 	sleep 1
 	clear
@@ -252,6 +279,8 @@ else
 Comum
 
 fi
+fi
+fi 
 
 read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite o nome do arquivo junto da sua extensão: \e[0m' archive
 	clear
