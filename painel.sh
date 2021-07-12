@@ -73,29 +73,30 @@ icyan='\e[1;36m'
 white='\e[1;37m'
 yellow='\e[1;33m'
 
-clear
+
 
 
 
 #FUNÇOES DO MENU PRINCIPAL
 
 Menu() {
-		clear
-		echo -e "$green<$blue====================$icyan=========================$blue=================$green>"
-        	echo
-		toilet -f smblock --filter border:metal '		Painel Admin!		'
-	        echo -e "$blue ----------------------(Micro Assistente)--------------------"
-        	echo
+	  clear
+	   echo -e "$green<$blue====================$icyan=========================$blue=================$green>"
+	    echo
+	     toilet -f smblock --filter border:metal '		Painel Admin!		'					            echo -e "$blue ----------------------(Micro Assistente)--------------------"
+	       echo
 	        echo -e "$green<$blue====================$icyan=========================$blue=================$green>"
-        	echo
-	        echo -e "$icyan[Opções Disponiveis]"
-	        echo "--------------------"
-		echo "1 - Ferramentas Comuns"
-		echo "2 - Ferramentas Avançadas"
-		echo "3 - Informações do Dispositivo"
-		echo "4 - Scripts Uteis"
-		echo "5 - Exit"
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite um das opções: \e[0m' opcao
+        	 echo
+         	  echo -e "$icyan[Opções Disponiveis]"
+	         echo "--------------------"
+	        echo "1 - Ferramentas Comuns"
+	       echo "2 - Ferramentas Avançadas"
+	      echo "3 - Informações do Dispositivo"
+	    echo "4 - Scripts Uteis"
+	   echo "5 - Exit"
+
+
+	read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite um das opções: \e[0m' opcao
 	case $opcao in
 	1) Comum ;;
 	2) Advanced ;;
@@ -103,7 +104,7 @@ read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite um das opções: \e[0m'
 	4) Scripts ;;
 	5) Sair ;;
 	*)
-	clear ; echo -e "$red Opcao desconhecida." ; sleep 1 ; clear ; Menu
+	clear ; echo -e "$red Opcao Invalida!!!" ; sleep 1 ; clear ; Menu
 	esac
 	}
 
@@ -111,53 +112,58 @@ Info() {
 
 var=$(find -name dep-painel)
 
-	clear
-	cd "$var" && bash myfetch.sh
-		echo
-		echo -e "$icyan Pressione 0 para voltar ao Menu Inicial."
-	read voltar
-if [ $voltar = 0 ]; then
-	clear
-	Menu
-	else
-		echo -e "$red Opção Invalida!!!"
-	sleep 1
-	clear
-	Menu
-fi
-	}
+	 clear
+	  cd "$var" && bash myfetch.sh
+	   echo
+	    echo -e "$icyan Pressione 0 para voltar ao Menu Inicial."
+	     read voltar
+	      if [ $voltar = 0 ]; then
+	       clear
+	      Menu
+	     else
+	    echo -e "$red Opção Invalida!!!"
+	   sleep 1
+	  clear
+	 Menu
+	 fi
+	 }  
 
-Scripts() {
 
+Scripts() 
+	{
+	clear
 	echo "Teste"
 	sleep 1
 	Menu
-}
+	}
 
-Sair() {
+Sair() 
+	{
 	clear
-		echo -e "$icyan Até logo!"
+	echo -e "$icyan Até logo!"
 	sleep 1
 	clear
 	exit 0
 	}
 
-Advanced() {
+
+Advanced() 
+	{
 	clear
-		echo -e "$green<$red====================$yellow===========$yellow==============$red=================$green>"
-                echo
-	        toilet -f smblock --filter border:metal '              Painel Admin!            '
-                echo -e "$blue ----------------------(Micro Assistente)--------------------"
-                echo
-                echo -e "$green<$red====================$yellow======$yellow===================$red=================$green>"
-		echo
-                echo -e "$red[Opções Avançadas Disponiveis]"
-                echo "-----------------------------"
-                echo "1 - Criar payload"
-                echo "2 - Voltar "
-		echo
-read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Digite um das opções: \e[0m' resposta
-	clear
+	 echo -e "$green<$red====================$yellow===========$yellow==============$red=================$green>"
+	  echo
+	   toilet -f smblock --filter border:metal '              Painel Admin!            '
+	    echo -e "$blue ----------------------(Micro Assistente)--------------------"
+	     echo
+	      echo -e "$green<$red====================$yellow======$yellow===================$red=================$green>"
+	       echo
+	        echo -e "$red[Opções Avançadas Disponiveis]"
+	       echo "-----------------------------"
+	      echo "1 - Criar payload"
+	     echo "2 - Voltar "
+	    echo
+	   read -p $'\n\e[1;31m[\e[0m\e[1;77m+\e[0m\e[1;31m] Digite um das opções: \e[0m' resposta
+	  clear
 
 if [ $resposta = 1 ]; then
 
@@ -167,32 +173,39 @@ elif [ $resposta = 2 ]; then
 	Menu
 	else
 	clear
-		echo -e "$red Opção invalida!!!"
+	echo -e "$red Opção invalida!!!"
 	sleep 1
 	clear
 	Advanced
 fi
 
-Advanced
+	Advanced
 
 }
 
-Comum() {
+#|----------------------------------------------------|
+#| Este é o menu de opções comuns                     | 
+#| Destinada para usuarios iniciantes ou para usuarios|
+#| Que prezam pela otimização do seu valioso tempo.   |
+#|----------------------------------------------------|
+
+Comum() 
+	{
+	 clear
+	  echo -e "$icyan[Opções Disponiveis]"
+	   echo "--------------------"
+	    echo "[ 1 ] Mover"
+	     echo "[ 2 ] Renomear"
+	      echo "[ 3 ] Criar"
+	       echo "[ 4 ] Instalar"
+	       echo "[ 5 ] Desistalar"
+	      echo "[ 6 ] Excluir"
+	     echo "[ 7 ] Backup"
+	    echo "[ 8 ] Atualizar"
+	   echo "[ 9 ] Voltar "
+	  echo -e "$green"
+	 read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite uma opção: \e[0m' resposta2
 	clear
-		echo -e "$icyan[Opções Disponiveis]"
-        	echo "--------------------"
-		echo "[ 1 ] Mover"
-		echo "[ 2 ] Renomear"
-		echo "[ 3 ] Criar"
-		echo "[ 4 ] Instalar"
-		echo "[ 5 ] Desistalar"
-		echo "[ 6 ] Excluir"
-		echo "[ 7 ] Backup"
-		echo "[ 8 ] Atualizar"
-		echo "[ 9 ] Voltar "
-		echo -e "$green"
-		read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite uma opção: \e[0m' resposta2
-		clear
 
 if [ $resposta2 = 1 ]; then
 
@@ -231,7 +244,7 @@ elif [ $resposta2 = 9 ]; then
         Menu
 else
 	clear
-        	echo -e "$red Opção invalida!!"
+        echo -e "$red Opção invalida!!"
         sleep 1
         clear
 	Comum
@@ -240,32 +253,28 @@ fi
 }
 
 
-#Funçoes comuns
+#-----------------------------------------|
+#| Aqui se encontram as funções do menu de|
+#| De opções comuns.                      |
+#|----------------------------------------|
 
-Mover(){	
-
-clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo: \e[0m' local
-
-if [ "$local" == "" ]; then
-	clear
-	echo -e "$red Esta Vazio!!!"
-	sleep 2
-
-	Comum
- 
-else
-
-if [ $local = 0 ]; then
-
-	Comum
-
-else
-
-if [ -e $local ]; then
-		echo -e "$icyan Arquivos do diretório $local"
-        	echo -e "$blue--------------------------------------------------------------"
-	        echo
+Mover()
+	{	
+	 clear
+	  read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo: \e[0m' local
+	   if [ "$local" == "" ]; then
+	    clear
+	   echo -e "$red Esta Vazio!!!"
+	  sleep 2
+	 Comum
+ 	  else
+	   if [ $local = 0 ]; then
+	    Comum
+	     else
+	      if [ -e $local ]; then
+echo -e "$icyan Arquivos do diretório $local"
+echo -e "$blue--------------------------------------------------------------"
+echo
 		cd $local && ls
 		echo
 	        echo -e "$blue--------------------------------------------------------------"
