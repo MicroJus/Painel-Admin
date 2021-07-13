@@ -253,10 +253,12 @@ fi
 }
 
 
-#-----------------------------------------|
-#| Aqui se encontram as funções do menu de|
-#| De opções comuns.                      |
-#|----------------------------------------|
+#  ________________________________________
+# |                                        |
+# | Aqui se encontram as funções do menu   |
+# | De opções comuns.                      |
+# |________________________________________|
+
 
 Mover()
 	{	
@@ -264,120 +266,116 @@ Mover()
 	  read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo: \e[0m' local
 	   if [ "$local" == "" ]; then
 	    clear
-	   echo -e "$red Esta Vazio!!!"
-	  sleep 2
-	 Comum
- 	  else
-	   if [ $local = 0 ]; then
+	     echo -e "$red Esta Vazio!!!"
+	      sleep 2
+	       Comum
+ 	        else
+	         if [ $local = 0 ]; then
+	         Comum
+	         else
+	        if [ -e $local ]; then
+	       echo -e "$icyan Arquivos do diretório $local"
+	      echo -e "$blue--------------------------------------------------------------"
+	     echo
+	    cd $local && ls
+	   echo
+	  echo -e "$blue--------------------------------------------------------------"
+         echo
+	else 
+	 echo -e "$red O local nao existe!!!"
+	  sleep 1
+	   clear
 	    Comum
-	     else
-	      if [ -e $local ]; then
-echo -e "$icyan Arquivos do diretório $local"
-echo -e "$blue--------------------------------------------------------------"
-echo
-		cd $local && ls
-		echo
-	        echo -e "$blue--------------------------------------------------------------"
-        	echo
+	     fi
+	      fi
+	       fi 
+	      read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite o nome do arquivo junto da sua extensão: \e[0m' archive
+	     clear
+	    if [ -e $archive ]; then
+	   clear
+	  read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local de destino: \e[0m' destino
+	 else
+	echo -e "$red O arquivo não existe"
+	 sleep 1
+	  clear
+	   Comum
+	    fi
+	     if [ -d "$destino" ];then
+	      echo -e "$green Movendo"
+	       sleep 1
+	        clear
+	         cd $local && mv $archive $destino
+                  echo -e "$green Movido!!!"
+	         sleep 1
+	        Comum
+	       else
+	      clear
+	     echo -e "$red O destino o nao existe!!!"
+	    sleep 2
+	   Comum
+	  fi
+	  }
 
-else 
-	echo -e "$red O local nao existe!!!"
-	sleep 1
-	clear
+#  ________________________
+# |                        |
+# |Esta é a função renomear|
+# |________________________|
 
-Comum
-
-fi
-fi
-fi 
-
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite o nome do arquivo junto da sua extensão: \e[0m' archive
-	clear
-if [ -e $archive ]; then
-	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local de destino: \e[0m' destino
-else
-		echo -e "$red O arquivo não existe"
-	sleep 1
-	clear
-
-Comum
-
-fi
-
-if [ -d "$destino" ];then
-		echo -e "$green Movendo"
-	sleep 1
-	clear
-	cd $local && mv $archive $destino
-                echo -e "$green Movido!!!"
-        sleep 1
-Comum
-
-else
-	clear
-		echo -e "$red O destino o nao existe!!!"
-	sleep 2
-Comum
-fi
-
-}
-
-#========================================================================
 
 Renomear(){
 
 	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo que deseja renomear: \e[0m' local2
+	 read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe o local do arquivo que deseja renomear: \e[0m' local2
+	  if [ $local2 = 0 ]; then
+	   Comum
+	    fi
+	     if [ ! -d "$local2" ]; then
+	      clear
+	       echo -e "$red O local não existe!"
+	        sleep 1
+	       clear
+	      Comum
+	     fi
+	    clear
+	   echo -e "$icyan Arquivos do diretório $local2"
+	  echo -e "$blue--------------------------------------------------------------"
+	 echo
+	 cd $local2 && ls
+	  echo
+	   echo -e "$blue--------------------------------------------------------------"
+	    echo
+	     read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite o nome do arquivo que deseja renomear junto da sua extensão: \e[0m' lastname
+	      clear
+	       DIR=$local2
+	        FILE=$lastname
+	         if [ -e "$FILE" ]; then
+	          echo -e "$red O arquivo existe $red"
+	         else
+	        echo -e "$red O arquivo digitado não existe"
+	       sleep 1
+	      Comum
+	     fi
+	    clear
+	   read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um novo nome para o arquivo junto da sua extensão: \e[0m' newname
+	 clear
+	echo -e "$green Renomeando..."
+	 sleep 1
+	  clear
+	   cd $local2 && mv $lastname "$newname"
+	    echo -e "$green Renomeado com sucesso!!!"
+	   sleep 1
+	  clear
+	 Comum	
+	}
 
-if [ $local2 = 0 ]; then
 
-	Comum
+#  ___________________________________
+# |                                   |
+# | Esta é a opção de criação         |
+# | Tanto de pastas quanto de arquivos|
+# |___________________________________|
 
-fi
 
-if [ ! -d "$local2" ]; then
-
-	clear
-		echo -e "$red O local não existe!"
-	sleep 1
-	clear
-	Comum
-	fi
-	clear
-		echo -e "$icyan Arquivos do diretório $local2"
-		echo -e "$blue--------------------------------------------------------------"
-		echo
-	cd $local2 && ls
-echo
-echo -e "$blue--------------------------------------------------------------"
-echo
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Digite o nome do arquivo que deseja renomear junto da sua extensão: \e[0m' lastname
-	clear
-	DIR=$local2
-	FILE=$lastname
-if [ -e "$FILE" ]; then
-		echo -e "$red O arquivo existe $red"
-	else
-		echo -e "$red O arquivo digitado não existe"
-	sleep 1
-	Comum
-fi
-	clear
-read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Informe um novo nome para o arquivo junto da sua extensão: \e[0m' newname
-	clear
-		echo -e "$green Renomeando..."
-	sleep 1
-	clear
-	cd $local2 && mv $lastname "$newname"
-		echo -e "$green Renomeado com sucesso!!!"
-	sleep 1
-	clear
-	Comum
-	
-}
-
-#========================================================================
 Criar(){
 clear		
 ptintf $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] O que feseja criar?: \e[0m'
